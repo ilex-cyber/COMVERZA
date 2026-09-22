@@ -1,0 +1,52 @@
+# ========================================
+# Laravel
+# ========================================
+
+src/.env
+src/.env.*
+!src/.env.example
+
+
+# ========================================
+# Dependencias PHP
+# ========================================
+
+src/vendor/
+
+
+# ========================================
+# Dependencias JavaScript
+# ========================================
+
+src/node_modules/
+
+
+# ========================================
+# Archivos generados por Laravel
+# ========================================
+
+src/storage/*.key
+src/storage/logs/
+src/storage/framework/
+src/storage/app/private/
+src/public/storage
+
+src/public/hot
+
+
+# ========================================
+# Sistema operativo
+# ========================================
+
+.DS_Store
+Thumbs.db
+
+
+# ========================================
+# Editores / IDE
+# ========================================
+
+.vscode/
+.idea/
+*.swp
+*.swo

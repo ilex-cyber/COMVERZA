@@ -1,0 +1,42 @@
+services:
+
+  laravel:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: comverza-laravel
+    ports:
+      - "8082:80"
+    volumes:
+      - ./src:/var/www/html
+      - laravel_storage:/var/www/html/storage
+      - laravel_cache:/var/www/html/bootstrap/cache
+    depends_on:
+      - mariadb
+    networks:
+      - comverza-laravel-network
+
+  mariadb:
+    image: mariadb:11
+    container_name: comverza-laravel-mariadb
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: comverza
+      MARIADB_USER: comverza
+      MARIADB_PASSWORD: comverza_password
+      MARIADB_ROOT_PASSWORD: root_password
+    ports:
+      - "63307:3306"
+    volumes:
+      - laravel_mariadb_data:/var/lib/mysql
+    networks:
+      - comverza-laravel-network
+
+volumes:
+  laravel_mariadb_data:
+  laravel_storage:
+  laravel_cache:
+
+networks:
+  comverza-laravel-network:
+    driver: bridge
