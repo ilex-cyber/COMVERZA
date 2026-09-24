@@ -1,0 +1,1182 @@
+/* ========================================
+   SERVICIOS - HERO
+======================================== */
+
+.services-page {
+
+    background:
+        #f5f8fd;
+
+    color:
+        #102953;
+
+}
+
+
+/* ========================================
+   HERO
+======================================== */
+
+.services-hero {
+
+    position:
+        relative;
+
+    min-height:
+        calc(100svh - 86px);
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    padding:
+        90px 0;
+
+    overflow:
+        hidden;
+
+}
+
+
+.services-hero::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        520px;
+
+    height:
+        520px;
+
+    right:
+        -180px;
+
+    top:
+        -120px;
+
+    border-radius:
+        50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(31,119,255,.15),
+            transparent 70%
+        );
+
+}
+
+
+.services-hero::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        400px;
+
+    height:
+        400px;
+
+    left:
+        -180px;
+
+    bottom:
+        -180px;
+
+    border-radius:
+        50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(122,77,255,.10),
+            transparent 70%
+        );
+
+}
+
+
+.services-hero-grid {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:
+        70px;
+
+    align-items:
+        center;
+
+}
+
+
+/* ========================================
+   TEXTO
+======================================== */
+
+.services-copy {
+
+    max-width:
+        600px;
+
+}
+
+
+.services-label {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    color:
+        #2775df;
+
+    font-size:
+        10px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        .13em;
+
+}
+
+
+.services-label::before {
+
+    content:
+        "";
+
+    width:
+        30px;
+
+    height:
+        2px;
+
+    background:
+        #1677ff;
+
+}
+
+
+.services-copy h1 {
+
+    margin:
+        20px 0;
+
+    font-size:
+        clamp(
+            44px,
+            5vw,
+            68px
+        );
+
+    line-height:
+        1;
+
+    letter-spacing:
+        -.05em;
+
+}
+
+
+.services-copy h1 span {
+
+    color:
+        #1677ff;
+
+}
+
+
+.services-copy p {
+
+    max-width:
+        570px;
+
+    color:
+        #637997;
+
+    font-size:
+        17px;
+
+    line-height:
+        1.75;
+
+}
+
+
+/* ========================================
+   VISUAL
+======================================== */
+
+.services-visual {
+
+    position:
+        relative;
+
+    min-height:
+        450px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+}
+
+
+.services-orbit {
+
+    position:
+        absolute;
+
+    width:
+        360px;
+
+    height:
+        360px;
+
+    border:
+        1px solid
+        rgba(35,123,255,.17);
+
+    border-radius:
+        50%;
+
+    animation:
+        orbitSpin
+        18s linear infinite;
+
+}
+
+
+.services-orbit::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        15px;
+
+    height:
+        15px;
+
+    top:
+        25px;
+
+    left:
+        80px;
+
+    border-radius:
+        50%;
+
+    background:
+        #ffd533;
+
+    box-shadow:
+        0 0 25px
+        rgba(255,213,51,.45);
+
+}
+
+
+.services-panel {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    width:
+        min(440px, 100%);
+
+    padding:
+        24px;
+
+    border:
+        1px solid
+        rgba(45,128,255,.18);
+
+    border-radius:
+        25px;
+
+    background:
+        rgba(255,255,255,.88);
+
+    box-shadow:
+        0 30px 70px
+        rgba(18,53,105,.14);
+
+    backdrop-filter:
+        blur(12px);
+
+}
+
+
+.services-panel-top {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    margin-bottom:
+        20px;
+
+}
+
+
+.services-panel-brand {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        9px;
+
+    color:
+        #16345f;
+
+    font-size:
+        13px;
+
+    font-weight:
+        900;
+
+}
+
+
+.services-panel-brand span {
+
+    width:
+        28px;
+
+    height:
+        28px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border-radius:
+        8px;
+
+    color:
+        white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #754cff,
+            #1683ff
+        );
+
+}
+
+
+.services-panel-status {
+
+    color:
+        #3bad76;
+
+    font-size:
+        10px;
+
+}
+
+
+/* ========================================
+   SERVICIOS VISUALES
+======================================== */
+
+.service-mini-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap:
+        12px;
+
+}
+
+
+.service-mini {
+
+    padding:
+        18px;
+
+    border:
+        1px solid
+        rgba(20,70,130,.08);
+
+    border-radius:
+        16px;
+
+    background:
+        #f8fbff;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease;
+
+}
+
+
+.service-mini:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(22,119,255,.20);
+
+    box-shadow:
+        0 15px 30px
+        rgba(28,80,150,.09);
+
+}
+
+
+.service-mini-icon {
+
+    width:
+        38px;
+
+    height:
+        38px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    margin-bottom:
+        12px;
+
+    border-radius:
+        11px;
+
+    color:
+        #1677ff;
+
+    background:
+        #eaf3ff;
+
+}
+
+
+.service-mini:nth-child(2)
+.service-mini-icon {
+
+    color:
+        #7a4dff;
+
+}
+
+
+.service-mini strong {
+
+    display:
+        block;
+
+    color:
+        #17375f;
+
+    font-size:
+        13px;
+
+}
+
+
+.service-mini span {
+
+    display:
+        block;
+
+    margin-top:
+        4px;
+
+    color:
+        #7a8ca7;
+
+    font-size:
+        10px;
+
+    line-height:
+        1.5;
+
+}
+
+
+/* ========================================
+   SEGUNDA SECCIÓN
+======================================== */
+
+.services-detail {
+
+    padding:
+        100px 0;
+
+    background:
+        #ffffff;
+
+}
+
+
+.services-detail-heading {
+
+    max-width:
+        720px;
+
+    margin:
+        0 auto 45px;
+
+    text-align:
+        center;
+
+}
+
+
+.services-detail-heading h2 {
+
+    margin:
+        15px 0;
+
+    font-size:
+        clamp(
+            34px,
+            4vw,
+            52px
+        );
+
+    line-height:
+        1.05;
+
+    letter-spacing:
+        -.045em;
+
+}
+
+
+.services-detail-heading h2 span {
+
+    color:
+        #1677ff;
+
+}
+
+
+.services-detail-heading p {
+
+    color:
+        #6f829f;
+
+    font-size:
+        15px;
+
+    line-height:
+        1.7;
+
+}
+
+
+.services-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap:
+        18px;
+
+}
+
+
+.service-feature {
+
+    position:
+        relative;
+
+    min-height:
+        260px;
+
+    padding:
+        28px;
+
+    border:
+        1px solid
+        rgba(25,70,125,.10);
+
+    border-radius:
+        22px;
+
+    background:
+        #f7faff;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease;
+
+    overflow:
+        hidden;
+
+}
+
+
+.service-feature::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        170px;
+
+    height:
+        170px;
+
+    right:
+        -80px;
+
+    bottom:
+        -80px;
+
+    border-radius:
+        50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(22,119,255,.10),
+            transparent 70%
+        );
+
+}
+
+
+.service-feature:hover {
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(22,119,255,.22);
+
+    box-shadow:
+        0 25px 55px
+        rgba(28,62,110,.11);
+
+}
+
+
+.service-feature-icon {
+
+    width:
+        50px;
+
+    height:
+        50px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    margin-bottom:
+        20px;
+
+    border-radius:
+        14px;
+
+    color:
+        #1677ff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eaf4ff,
+            #f0ebff
+        );
+
+}
+
+
+.service-feature h3 {
+
+    margin:
+        0 0 10px;
+
+    color:
+        #17365f;
+
+    font-size:
+        20px;
+
+}
+
+
+.service-feature p {
+
+    margin:
+        0;
+
+    color:
+        #7185a2;
+
+    font-size:
+        13px;
+
+    line-height:
+        1.7;
+
+}
+
+
+/* ========================================
+   PROCESO
+======================================== */
+
+.services-process {
+
+    padding:
+        100px 0;
+
+    background:
+        #f5f8fd;
+
+}
+
+
+.process-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap:
+        14px;
+
+    margin-top:
+        45px;
+
+}
+
+
+.process-step {
+
+    position:
+        relative;
+
+    padding:
+        25px;
+
+    border-radius:
+        20px;
+
+    background:
+        white;
+
+    border:
+        1px solid
+        rgba(25,70,125,.09);
+
+}
+
+
+.process-number {
+
+    color:
+        #1677ff;
+
+    font-size:
+        11px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        .12em;
+
+}
+
+
+.process-step h3 {
+
+    margin:
+        24px 0 8px;
+
+    color:
+        #183961;
+
+    font-size:
+        16px;
+
+}
+
+
+.process-step p {
+
+    margin:
+        0;
+
+    color:
+        #7486a2;
+
+    font-size:
+        12px;
+
+    line-height:
+        1.6;
+
+}
+
+
+/* ========================================
+   CTA
+======================================== */
+
+.services-cta {
+
+    padding:
+        90px 0;
+
+    background:
+        #06112f;
+
+}
+
+
+.services-cta-card {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        35px;
+
+    padding:
+        45px;
+
+    border:
+        1px solid
+        rgba(78,151,255,.20);
+
+    border-radius:
+        28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(18,59,117,.80),
+            rgba(9,25,62,.90)
+        );
+
+    box-shadow:
+        0 30px 70px
+        rgba(0,0,0,.18);
+
+}
+
+
+.services-cta-card h2 {
+
+    margin:
+        0 0 10px;
+
+    color:
+        white;
+
+    font-size:
+        clamp(
+            32px,
+            4vw,
+            46px
+        );
+
+    line-height:
+        1.05;
+
+}
+
+
+.services-cta-card p {
+
+    max-width:
+        600px;
+
+    margin:
+        0;
+
+    color:
+        #9db5da;
+
+    font-size:
+        14px;
+
+}
+
+
+/* ========================================
+   ANIMACIÓN
+======================================== */
+
+@keyframes orbitSpin {
+
+    from {
+        transform:
+            rotate(0deg);
+    }
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 900px) {
+
+    .services-hero-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .services-copy {
+        max-width:
+            none;
+    }
+
+    .services-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .process-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .services-cta-card {
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .services-hero {
+        min-height:
+            auto;
+
+        padding:
+            75px 0;
+    }
+
+    .service-mini-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .process-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .services-panel {
+        padding:
+            17px;
+    }
+
+    .services-orbit {
+        width:
+            290px;
+
+        height:
+            290px;
+    }
+
+    .services-cta-card {
+        padding:
+            30px 24px;
+    }
+
+}
+
+/* =========================================================
+   SERVICIOS — PROPORCIÓN UNIFORME DE SECCIONES
+   ========================================================= */
+
+@media (min-width: 851px) {
+
+    /* Cada sección principal de Servicios parte
+       de una pantalla completa */
+
+    body:has(.services-hero) section {
+        min-height: 100dvh;
+        box-sizing: border-box;
+
+        display: flex;
+        align-items: center;
+    }
+
+
+    /* =====================================================
+       HERO
+       ===================================================== */
+
+    body:has(.services-hero) .services-hero {
+        min-height: 100dvh;
+    }
+
+
+    /* =====================================================
+       SECCIÓN DE SOLUCIONES
+       ===================================================== */
+
+    body:has(.services-hero) .services-details,
+    body:has(.services-hero) .services-features,
+    body:has(.services-hero) .services-solutions {
+
+        padding-top: 75px;
+        padding-bottom: 75px;
+    }
+
+
+    /* =====================================================
+       PROCESO
+       ===================================================== */
+
+    body:has(.services-hero) .services-process {
+        min-height: 100dvh;
+
+        padding-top: 75px;
+        padding-bottom: 75px;
+    }
+
+
+    /* =====================================================
+       CTA
+       ===================================================== */
+
+    body:has(.services-hero) .services-cta {
+        min-height: 70dvh;
+    }
+
+}
+
+
+/* =========================================================
+   PANTALLAS ALTAS
+   ========================================================= */
+
+@media (min-width: 851px) and (min-height: 900px) {
+
+    body:has(.services-hero) .services-details,
+    body:has(.services-hero) .services-features,
+    body:has(.services-hero) .services-solutions,
+    body:has(.services-hero) .services-process {
+
+        padding-top: 95px;
+        padding-bottom: 95px;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET / MÓVIL
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    body:has(.services-hero) section {
+        min-height: auto;
+    }
+
+}
+
+
+@media (max-width: 620px) {
+
+    body:has(.services-hero) section {
+        min-height: auto;
+    }
+
+    body:has(.services-hero) .services-details,
+    body:has(.services-hero) .services-features,
+    body:has(.services-hero) .services-solutions,
+    body:has(.services-hero) .services-process {
+
+        padding-top: 75px;
+        padding-bottom: 75px;
+    }
+
+}

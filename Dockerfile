@@ -30,7 +30,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Habilitar mod_rewrite para Laravel
-RUN a2enmod rewrite
+RUN a2enmod rewrite expires headers deflate
 
 # Instalar Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
@@ -47,3 +47,9 @@ WORKDIR /var/www/html
 
 # Permisos para Laravel
 RUN chown -R www-data:www-data /var/www/html
+
+COPY docker/php/opcache.ini /usr/local/etc/php/conf.d/opcache-comverza.ini
+
+COPY docker/php/apache-optimization.conf /etc/apache2/conf-available/comverza-optimization.conf
+
+RUN a2enconf comverza-optimization

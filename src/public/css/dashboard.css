@@ -1,0 +1,726 @@
+/* =========================================================
+   DASHBOARD OFICIAL COMVERZA
+   Componente compartido por Inicio y Plataforma
+   ========================================================= */
+
+.comverza-dashboard-visual {
+    position: relative;
+
+    width: 100%;
+    min-height: 540px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.comverza-dashboard-glow {
+    position: absolute;
+
+    width: 90%;
+    height: 80%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(30,123,255,.27),
+            transparent 68%
+        );
+
+    filter: blur(26px);
+}
+
+
+/* =========================================================
+   DASHBOARD
+   ========================================================= */
+
+.comverza-dashboard {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 650px;
+
+    border:
+        1px solid
+        rgba(87,161,255,.25);
+
+    border-radius: 23px;
+
+    overflow: hidden;
+
+    background:
+        rgba(7,20,53,.96);
+
+    box-shadow:
+        0 35px 80px
+        rgba(0,0,0,.35);
+
+    transform:
+        perspective(1100px)
+        rotateY(-4deg);
+
+    transition:
+        transform .4s ease;
+}
+
+.comverza-dashboard:hover {
+    transform:
+        perspective(1100px)
+        rotateY(0deg)
+        translateY(-7px);
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.comverza-dashboard-header {
+    min-height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 16px;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.06);
+
+    background: #0a1a40;
+
+    font-size: 10px;
+}
+
+.comverza-dashboard-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.comverza-dashboard-mark {
+    width: 24px;
+    height: 24px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 7px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #784cff,
+            #1677ff
+        );
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.comverza-dashboard-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    color: #70d79c;
+}
+
+.comverza-dashboard-status span {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #70d79c;
+}
+
+
+/* =========================================================
+   BODY
+   ========================================================= */
+
+.comverza-dashboard-body {
+    display: grid;
+
+    grid-template-columns:
+        125px
+        1fr;
+
+    min-height: 430px;
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.comverza-dashboard-sidebar {
+    padding: 17px 9px;
+
+    background: #071536;
+
+    border-right:
+        1px solid
+        rgba(255,255,255,.05);
+}
+
+.comverza-sidebar-user {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 21px;
+}
+
+.comverza-sidebar-avatar {
+    width: 29px;
+    height: 29px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4da3ff,
+            #7857ff
+        );
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.comverza-sidebar-user strong {
+    display: block;
+
+    color: white;
+
+    font-size: 8px;
+}
+
+.comverza-sidebar-user small {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #677ba4;
+
+    font-size: 7px;
+}
+
+.comverza-sidebar-nav {
+    display: grid;
+
+    gap: 5px;
+}
+
+.comverza-sidebar-link {
+    min-height: 31px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 0 8px;
+
+    border-radius: 8px;
+
+    color: #7f95b8;
+
+    font-size: 8px;
+
+    text-decoration: none;
+
+    transition: .25s ease;
+}
+
+.comverza-sidebar-link span {
+    width: 12px;
+
+    text-align: center;
+}
+
+.comverza-sidebar-link:hover,
+.comverza-sidebar-link.is-active {
+    color: white;
+
+    background:
+        rgba(27,119,255,.18);
+}
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.comverza-dashboard-main {
+    min-width: 0;
+
+    padding: 18px;
+}
+
+.comverza-dashboard-title {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 15px;
+}
+
+.comverza-dashboard-title > div:first-child span {
+    display: block;
+
+    color: #6e82aa;
+
+    font-size: 7px;
+
+    letter-spacing: .12em;
+}
+
+.comverza-dashboard-title h3 {
+    margin-top: 4px;
+
+    font-size: 15px;
+}
+
+.comverza-dashboard-avatar {
+    width: 28px;
+    height: 28px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4da3ff,
+            #7857ff
+        );
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   ESTADÍSTICAS
+   ========================================================= */
+
+.comverza-dashboard-stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 8px;
+}
+
+.comverza-stat-card {
+    min-width: 0;
+    min-height: 91px;
+
+    padding: 12px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.06);
+
+    border-radius: 11px;
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+.comverza-stat-card span {
+    display: block;
+
+    color: #7589ac;
+
+    font-size: 7px;
+}
+
+.comverza-stat-card strong {
+    display: block;
+
+    margin-top: 8px;
+
+    font-size: 17px;
+}
+
+.comverza-stat-card small {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #6b7fa4;
+
+    font-size: 7px;
+}
+
+
+/* =========================================================
+   PANELES
+   ========================================================= */
+
+.comverza-dashboard-panels {
+    display: grid;
+
+    grid-template-columns:
+        1.22fr
+        .78fr;
+
+    gap: 8px;
+
+    margin-top: 8px;
+}
+
+.comverza-dashboard-chart-panel,
+.comverza-dashboard-activity-panel {
+    min-height: 190px;
+
+    padding: 12px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.06);
+
+    border-radius: 11px;
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+.comverza-dashboard-panel-header {
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.comverza-dashboard-panel-header span {
+    display: block;
+
+    color: #6a7da3;
+
+    font-size: 6px;
+
+    letter-spacing: .11em;
+}
+
+.comverza-dashboard-panel-header strong {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 9px;
+}
+
+.comverza-dashboard-panel-header small {
+    color: #6c81a4;
+
+    font-size: 6px;
+}
+
+
+/* =========================================================
+   GRÁFICA
+   ========================================================= */
+
+.comverza-dashboard-chart {
+    height: 135px;
+
+    display: flex;
+
+    align-items: end;
+
+    gap: 7px;
+
+    margin-top: 12px;
+}
+
+.comverza-dashboard-chart i {
+    flex: 1;
+
+    border-radius:
+        5px 5px 2px 2px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #3ba8ff,
+            #6959ff
+        );
+
+    animation:
+        comverzaBarPulse
+        3s ease-in-out
+        infinite alternate;
+}
+
+.comverza-dashboard-chart i:nth-child(2) {
+    animation-delay: .2s;
+}
+
+.comverza-dashboard-chart i:nth-child(3) {
+    animation-delay: .4s;
+}
+
+.comverza-dashboard-chart i:nth-child(4) {
+    animation-delay: .6s;
+}
+
+.comverza-dashboard-chart i:nth-child(5) {
+    animation-delay: .8s;
+}
+
+.comverza-dashboard-chart i:nth-child(6) {
+    animation-delay: 1s;
+}
+
+.comverza-dashboard-chart i:nth-child(7) {
+    animation-delay: 1.2s;
+}
+
+
+/* =========================================================
+   ACTIVIDAD
+   ========================================================= */
+
+.comverza-activity-item {
+    display: grid;
+
+    grid-template-columns:
+        7px
+        1fr
+        auto;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 12px 0;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.05);
+
+    color: #dce7fb;
+
+    font-size: 7px;
+}
+
+.comverza-activity-item i {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #5da5ff;
+}
+
+.comverza-activity-item small {
+    color: #687ea5;
+
+    font-size: 6px;
+}
+
+
+/* =========================================================
+   TARJETAS FLOTANTES
+   ========================================================= */
+
+.comverza-floating-card {
+    position: absolute;
+
+    z-index: 5;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 10px 12px;
+
+    border:
+        1px solid
+        rgba(95,166,255,.20);
+
+    border-radius: 12px;
+
+    background:
+        rgba(4,16,44,.82);
+
+    backdrop-filter:
+        blur(15px);
+
+    box-shadow:
+        0 20px 45px
+        rgba(0,0,0,.22);
+
+    animation:
+        comverzaDashboardFloat
+        5s ease-in-out
+        infinite;
+}
+
+.comverza-floating-left {
+    left: -28px;
+    top: 19%;
+}
+
+.comverza-floating-right {
+    right: -26px;
+    bottom: 14%;
+
+    animation-delay: -2.5s;
+}
+
+.comverza-floating-icon {
+    width: 29px;
+    height: 29px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 9px;
+
+    color: #66b0ff;
+
+    background:
+        rgba(31,121,255,.12);
+
+    font-size: 13px;
+}
+
+.comverza-floating-yellow {
+    color: #172440;
+
+    background:
+        #ffd533;
+}
+
+.comverza-floating-card strong,
+.comverza-floating-card small {
+    display: block;
+}
+
+.comverza-floating-card strong {
+    font-size: 8px;
+}
+
+.comverza-floating-card small {
+    margin-top: 2px;
+
+    color: #7187a8;
+
+    font-size: 6px;
+}
+
+
+/* =========================================================
+   ANIMACIONES
+   ========================================================= */
+
+@keyframes comverzaDashboardFloat {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+}
+
+@keyframes comverzaBarPulse {
+
+    from {
+        transform:
+            scaleY(.91);
+
+        transform-origin:
+            bottom;
+    }
+
+    to {
+        transform:
+            scaleY(1);
+
+        transform-origin:
+            bottom;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE DEL COMPONENTE
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    .comverza-dashboard-body {
+        grid-template-columns: 1fr;
+    }
+
+    .comverza-dashboard-sidebar {
+        display: none;
+    }
+
+}
+
+@media (max-width: 620px) {
+
+    .comverza-dashboard-visual {
+        min-height: 470px;
+    }
+
+    .comverza-dashboard {
+        transform: none;
+    }
+
+    .comverza-dashboard:hover {
+        transform: translateY(-5px);
+    }
+
+    .comverza-dashboard-stats {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .comverza-dashboard-panels {
+        grid-template-columns: 1fr;
+    }
+
+    .comverza-floating-left {
+        left: -10px;
+    }
+
+    .comverza-floating-right {
+        right: -10px;
+    }
+
+}
+
+@media (max-width: 460px) {
+
+    .comverza-dashboard-stats {
+        grid-template-columns: 1fr;
+    }
+
+}

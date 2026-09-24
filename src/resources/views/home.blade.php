@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/comverza.css') }}">
     <link rel="stylesheet" href="{{ asset('css/sections.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 </head>
 
 <body>
@@ -30,10 +31,17 @@
 
                 <a href="#">Inicio</a>
                 <a href="#nosotros">Nosotros</a>
-                <a href="#servicios">Servicios</a>
+                <a href="{{ route('servicios') }}">
+                    Servicios
+                </a>
                 <a href="#productos">Productos</a>
-                <a href="#plataforma">Plataforma</a>
-                <a href="#contacto">Contacto</a>
+                <a href="{{ route('plataforma') }}">
+                    Plataforma
+                </a>
+
+                <a href="{{ route('contacto') }}">
+                    Contacto
+                </a>
 
             </nav>
 
@@ -113,177 +121,7 @@
 
                 <div class="hero-visual reveal">
 
-                    <div class="visual-glow"></div>
-
-                    <div class="dashboard">
-
-                        <div class="dashboard-header">
-
-                            <div class="window-dots">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-
-                            <strong>
-                                COMVERZA
-                            </strong>
-
-                            <small>
-                                ● En línea
-                            </small>
-
-                        </div>
-
-
-                        <div class="dashboard-body">
-
-                            <aside class="dashboard-sidebar">
-
-                                <div class="dashboard-logo">
-                                    C
-                                </div>
-
-                                <div class="dashboard-item active">
-                                    Inicio
-                                </div>
-
-                                <div class="dashboard-item">
-                                    Productos
-                                </div>
-
-                                <div class="dashboard-item">
-                                    Pedidos
-                                </div>
-
-                                <div class="dashboard-item">
-                                    Proveedores
-                                </div>
-
-                                <div class="dashboard-item">
-                                    Facturación
-                                </div>
-
-                            </aside>
-
-
-                            <div class="dashboard-main">
-
-                                <div class="dashboard-title">
-
-                                    <div>
-                                        <small>
-                                            RESUMEN
-                                        </small>
-
-                                        <h3>
-                                            Todo conectado.
-                                        </h3>
-                                    </div>
-
-                                    <div class="avatar">
-                                        C
-                                    </div>
-
-                                </div>
-
-
-                                <div class="stats">
-
-                                    <div class="stat-card">
-                                        <span>📦</span>
-                                        <strong>48</strong>
-                                        <small>Productos</small>
-                                    </div>
-
-                                    <div class="stat-card">
-                                        <span>🛒</span>
-                                        <strong>24</strong>
-                                        <small>Pedidos</small>
-                                    </div>
-
-                                    <div class="stat-card">
-                                        <span>▤</span>
-                                        <strong>18</strong>
-                                        <small>Facturas</small>
-                                    </div>
-
-                                </div>
-
-
-                                <div class="chart">
-
-                                    <div class="chart-header">
-
-                                        <strong>
-                                            Actividad reciente
-                                        </strong>
-
-                                        <small>
-                                            Últimos 7 días
-                                        </small>
-
-                                    </div>
-
-                                    <div class="bars">
-
-                                        <span style="height:35%"></span>
-                                        <span style="height:50%"></span>
-                                        <span style="height:42%"></span>
-                                        <span style="height:70%"></span>
-                                        <span style="height:57%"></span>
-                                        <span style="height:85%"></span>
-                                        <span style="height:72%"></span>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- TARJETA FLOTANTE -->
-
-                    <div class="floating-card floating-one">
-
-                        <span class="floating-icon">
-                            ✓
-                        </span>
-
-                        <div>
-                            <strong>
-                                Procesos conectados
-                            </strong>
-
-                            <small>
-                                Todo bajo control
-                            </small>
-                        </div>
-
-                    </div>
-
-
-                    <div class="floating-card floating-two">
-
-                        <span class="floating-icon yellow-icon">
-                            ✦
-                        </span>
-
-                        <div>
-                            <strong>
-                                Mejores decisiones
-                            </strong>
-
-                            <small>
-                                Información en tiempo real
-                            </small>
-                        </div>
-
-                    </div>
+                    @include('components.comverza-dashboard')
 
                 </div>
 
