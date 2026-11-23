@@ -3,23 +3,24 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
     /**
-     * Seed the application's database.
+     * Se ejecuta en cada arranque del contenedor, pero solo siembra datos
+     * cuando la base está vacía (no pisa información capturada).
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $this->call(RolesPermisosSeeder::class);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        if (User::exists()) {
+            $this->command?->info('La base ya tiene datos: se omite la carga de demostración.');
+
+            return;
+        }
+
+        $this->call(DemoSeeder::class);
     }
 }

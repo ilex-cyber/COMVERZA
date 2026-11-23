@@ -9,10 +9,21 @@ services:
       - "8082:80"
     volumes:
       - ./src:/var/www/html
-      - laravel_storage:/var/www/html/storage
-      - laravel_cache:/var/www/html/bootstrap/cache
+      # vendor/ vive en un volumen nativo de Docker: evita la lentitud de
+      # los volúmenes montados en Windows/macOS (miles de archivos)
+      - laravel_vendor:/var/www/html/vendor
+    environment:
+      DB_CONNECTION: mariadb
+      DB_HOST: mariadb
+      DB_PORT: 3306
+      DB_DATABASE: comverza
+      DB_USERNAME: comverza
+      DB_PASSWORD: comverza_password
     depends_on:
-      - mariadb
+      mariadb:
+        condition: service_healthy
+      mailpit:
+        condition: service_started
     networks:
       - comverza-laravel-network
 
@@ -29,13 +40,28 @@ services:
       - "63307:3306"
     volumes:
       - laravel_mariadb_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    networks:
+      - comverza-laravel-network
+
+  # Bandeja de correo de desarrollo: http://localhost:8025
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: comverza-mailpit
+    restart: unless-stopped
+    ports:
+      - "8025:8025"
+      - "1025:1025"
     networks:
       - comverza-laravel-network
 
 volumes:
   laravel_mariadb_data:
-  laravel_storage:
-  laravel_cache:
+  laravel_vendor:
 
 networks:
   comverza-laravel-network:
