@@ -65,7 +65,9 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => env('APP_TIMEZONE', 'America/Mexico_City'),
+
+    'admin_email' => env('COMVERZA_ADMIN_EMAIL', 'admin@comverza.com'),
 
     /*
     |--------------------------------------------------------------------------

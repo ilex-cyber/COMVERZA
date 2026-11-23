@@ -1,599 +1,225 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+@extends('layouts.app')
 
-    <title>COMVERZA | Tecnología que impulsa tu negocio</title>
+@section('title', 'COMVERZA | Tecnología que impulsa tu negocio')
 
-    <link rel="stylesheet" href="{{ asset('css/comverza.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/sections.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-</head>
+@section('styles')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.1.15/swiper-bundle.min.css">
+@endsection
 
-<body>
+@section('content')
 
-    <!-- =========================
-         NAVBAR
-    ========================== -->
-    <header class="navbar">
+{{-- ========================= HERO ========================= --}}
+<section class="hero">
+    <div class="hero-glow glow-one"></div>
+    <div class="hero-glow glow-two"></div>
+    <div class="hero-grid"></div>
 
-        <div class="container navbar-content">
-
-            <a href="#" class="logo">
-                <img
-                    src="{{ asset('images/logo_comverza.png') }}"
-                    alt="Logo COMVERZA"
-                >
-            </a>
-
-            <nav class="nav-menu">
-
-                <a href="#">Inicio</a>
-                <a href="#nosotros">Nosotros</a>
-                <a href="{{ route('servicios') }}">
-                    Servicios
-                </a>
-                <a href="#productos">Productos</a>
-                <a href="{{ route('plataforma') }}">
-                    Plataforma
-                </a>
-
-                <a href="{{ route('contacto') }}">
-                    Contacto
-                </a>
-
-            </nav>
-
-            <div class="nav-actions">
-
-                <a href="#login" class="login-link">
-                    Iniciar sesión
-                </a>
-
-                <a href="#contacto" class="btn btn-yellow">
-                    Comenzar ahora
-                </a>
-
+    <div class="container hero-content">
+        <div class="hero-text reveal">
+            <span class="hero-badge"><span></span>Plataforma empresarial</span>
+            <h1>Conecta, centraliza y <strong>gestiona tu negocio</strong> desde un solo lugar.</h1>
+            <p>COMVERZA es una plataforma empresarial diseñada para conectar empresas, clientes y proveedores en un entorno centralizado, seguro y eficiente.</p>
+            <div class="hero-buttons">
+                <a href="{{ route('catalogo') }}" class="btn btn-yellow">Explorar catálogo <span>→</span></a>
+                <a href="#nosotros" class="btn btn-outline">Conocer COMVERZA</a>
             </div>
-
         </div>
+        <div class="hero-visual reveal">
+            @include('components.comverza-dashboard')
+        </div>
+    </div>
+</section>
 
-    </header>
+{{-- ========================= INDICADORES (API) ========================= --}}
+<section class="stats-section">
+    <div class="container stats-grid">
+        <article class="stat-item reveal">
+            <div class="stat-icon">◈</div>
+            <div><strong data-api-count="productos">—</strong><span>Productos en catálogo</span></div>
+        </article>
+        <article class="stat-item reveal">
+            <div class="stat-icon">▦</div>
+            <div><strong data-api-count="categorias">—</strong><span>Categorías de negocio</span></div>
+        </article>
+        <article class="stat-item reveal">
+            <div class="stat-icon">👥</div>
+            <div><strong data-api-count="proveedores">—</strong><span>Proveedores verificados</span></div>
+        </article>
+        <article class="stat-item reveal">
+            <div class="stat-icon">◉</div>
+            <div><strong>24/7</strong><span>Soporte y acompañamiento</span></div>
+        </article>
+    </div>
+</section>
 
-
-    <!-- =========================
-         HERO
-    ========================== -->
-    <main>
-
-        <section class="hero">
-
-            <!-- Efectos de fondo -->
-
-            <div class="hero-glow glow-one"></div>
-            <div class="hero-glow glow-two"></div>
-            <div class="hero-grid"></div>
-
-
-            <div class="container hero-content">
-
-                <!-- TEXTO -->
-
-                <div class="hero-text reveal">
-
-                    <span class="hero-badge">
-                        <span></span>
-                        Plataforma empresarial
-                    </span>
-
-                    <h1>
-                        Conecta, centraliza y
-                        <strong>
-                            gestiona tu negocio
-                        </strong>
-                        desde un solo lugar.
-                    </h1>
-
-                    <p>
-                        COMVERZA es una plataforma empresarial diseñada
-                        para conectar empresas, clientes y proveedores
-                        en un entorno centralizado, seguro y eficiente.
-                    </p>
-
-                    <div class="hero-buttons">
-
-                        <a href="#plataforma" class="btn btn-yellow">
-                            Explorar plataforma
-                            <span>→</span>
-                        </a>
-
-                        <a href="#nosotros" class="btn btn-outline">
-                            Conocer COMVERZA
-                        </a>
-
+{{-- ========================= CARRUSEL DE FOTOS ========================= --}}
+@if ($banners->count())
+<section class="showcase-section">
+    <div class="container">
+        <div class="landing-heading reveal">
+            <span class="section-label">COMVERZA EN ACCIÓN</span>
+            <h2>Una plataforma pensada para <span>operaciones reales.</span></h2>
+        </div>
+        <div class="swiper showcase-swiper reveal">
+            <div class="swiper-wrapper">
+                @foreach ($banners as $b)
+                    <div class="swiper-slide">
+                        <div class="showcase-slide" style="background-image:url('{{ $b->imagen_url }}')">
+                            <div class="showcase-caption">
+                                <span>{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }} / {{ str_pad($banners->count(), 2, '0', STR_PAD_LEFT) }}</span>
+                                <h3>{{ $b->titulo }}</h3>
+                                @if ($b->subtitulo)<p>{{ $b->subtitulo }}</p>@endif
+                                @if ($b->enlace)<a class="btn btn-yellow" href="{{ $b->enlace }}">Conocer más →</a>@endif
+                            </div>
+                        </div>
                     </div>
-
-                </div>
-
-
-                <!-- VISUAL -->
-
-                <div class="hero-visual reveal">
-
-                    @include('components.comverza-dashboard')
-
-                </div>
-
+                @endforeach
             </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+</section>
+@endif
 
-        </section>
+{{-- ========================= ¿QUÉ ES COMVERZA? ========================= --}}
+<section class="about-section" id="nosotros">
+    <div class="container about-grid">
+        <div class="about-image reveal">
+            <img src="{{ asset('images/que_somos_comverza.png') }}" alt="COMVERZA - Plataforma empresarial">
+        </div>
+        <div class="about-content reveal">
+            <span class="section-label">¿QUÉ ES COMVERZA?</span>
+            <h2>Una visión para <span>centralizar la gestión empresarial.</span></h2>
+            <p>COMVERZA es una plataforma web B2B que integra productos, clientes, proveedores, pedidos, facturación y logística en un mismo entorno digital.</p>
+            <div class="benefits">
+                <div class="benefit"><div class="benefit-icon">✓</div><div><strong>Más eficiencia</strong><span>Simplifica tus procesos.</span></div></div>
+                <div class="benefit"><div class="benefit-icon">✓</div><div><strong>Mayor control</strong><span>Ten una visión más clara.</span></div></div>
+                <div class="benefit"><div class="benefit-icon">✓</div><div><strong>Más conexión</strong><span>Mantén todo conectado.</span></div></div>
+            </div>
+        </div>
+    </div>
+</section>
 
-        <!-- =========================
-             INDICADORES
-        ========================== -->
+{{-- ========================= GALERÍA ========================= --}}
+<section class="gallery-section">
+    <div class="container">
+        <div class="landing-heading landing-heading--split reveal">
+            <div>
+                <span class="section-label">DE LA BODEGA A TU CLIENTE</span>
+                <h2>Cada etapa de tu operación, <span>conectada.</span></h2>
+            </div>
+            <p>Desde el almacén y la logística hasta el análisis de datos y la relación con tus clientes, COMVERZA acompaña a todo tu equipo.</p>
+        </div>
+        <div class="gallery-grid">
+            @foreach ([
+                ['almacen-inventario.jpg', 'Inventario', 'Stock en tiempo real con alertas automáticas.', 'tall'],
+                ['metricas-tiempo-real.jpg', 'Analítica', 'Dashboards de impacto para decidir mejor.', ''],
+                ['presentacion-equipo.jpg', 'Equipos', 'Roles y permisos para cada colaborador.', ''],
+                ['infraestructura-nube.jpg', 'Infraestructura', 'Seguridad y disponibilidad en la nube.', 'wide'],
+                ['exito-clientes.jpg', 'Clientes', 'Pedidos y seguimiento sin fricción.', ''],
+            ] as [$img, $titulo, $texto, $clase])
+                <figure class="gallery-item {{ $clase }} reveal">
+                    <img src="{{ asset('images/landing/'.$img) }}" alt="{{ $titulo }}" loading="lazy">
+                    <figcaption><strong>{{ $titulo }}</strong><span>{{ $texto }}</span></figcaption>
+                </figure>
+            @endforeach
+        </div>
+    </div>
+</section>
 
-        <section class="stats-section">
+{{-- ========================= CATEGORÍAS (API GET /categorias) ========================= --}}
+<section class="api-section api-section--light" id="categorias">
+    <div class="container">
+        <div class="landing-heading landing-heading--split reveal">
+            <div>
+                <span class="section-label">EXPLORA POR CATEGORÍA</span>
+                <h2>Todo lo que tu empresa <span>necesita para operar.</span></h2>
+            </div>
+            <a class="landing-link" href="{{ route('catalogo') }}">Ver catálogo completo →</a>
+        </div>
+        <div class="category-grid" id="apiCategorias">
+            @for ($i = 0; $i < 8; $i++)<div class="skeleton skeleton-card"></div>@endfor
+        </div>
+    </div>
+</section>
 
-            <div class="container stats-grid">
+{{-- ========================= PRODUCTOS DESTACADOS (API GET /productos) ========================= --}}
+<section class="api-section" id="productos">
+    <div class="container">
+        <div class="landing-heading landing-heading--split reveal">
+            <div>
+                <span class="section-label">PRODUCTOS DESTACADOS</span>
+                <h2>Disponibles hoy, <span>con precio y existencias reales.</span></h2>
+            </div>
+            <a class="landing-link" href="{{ route('catalogo') }}">Ver todos los productos →</a>
+        </div>
+        <div class="product-grid" id="apiProductos">
+            @for ($i = 0; $i < 8; $i++)<div class="skeleton skeleton-product"></div>@endfor
+        </div>
+    </div>
+</section>
 
-                <article class="stat-item reveal">
-
-                    <div class="stat-icon">
-                        ◈
-                    </div>
-
-                    <div>
-                        <strong>Productos</strong>
-                        <span>Catálogo e inventario</span>
-                    </div>
-
+{{-- ========================= MÓDULOS ========================= --}}
+<section class="modules-section" id="modulos">
+    <div class="container">
+        <div class="modules-heading reveal">
+            <div>
+                <span class="section-label">MÓDULOS DE LA PLATAFORMA</span>
+                <h2>Todo lo que necesitas <span>en un solo lugar.</span></h2>
+            </div>
+            <p>Cada módulo está diseñado para simplificar tus procesos y ayudarte a mantener tu negocio conectado.</p>
+        </div>
+        <div class="modules-grid">
+            @foreach ([['◈', 'Productos', 'Catálogo y control de inventario.', route('catalogo')], ['🛒', 'Pedidos', 'Seguimiento y gestión comercial.', route('plataforma')], ['👥', 'Proveedores', 'Red de proveedores y relaciones comerciales.', route('home').'#proveedores'], ['▤', 'Reportes', 'PDF, Excel y dashboards de impacto.', route('plataforma')]] as [$ico, $t, $d, $url])
+                <article class="module-card reveal">
+                    <div class="module-icon">{{ $ico }}</div>
+                    <div class="module-content"><h3>{{ $t }}</h3><p>{{ $d }}</p></div>
+                    <a href="{{ $url }}" aria-label="{{ $t }}">→</a>
                 </article>
+            @endforeach
+        </div>
+    </div>
+</section>
 
-
-                <article class="stat-item reveal">
-
-                    <div class="stat-icon">
-                        👥
-                    </div>
-
-                    <div>
-                        <strong>Empresas</strong>
-                        <span>Operaciones conectadas</span>
-                    </div>
-
-                </article>
-
-
-                <article class="stat-item reveal">
-
-                    <div class="stat-icon">
-                        ◇
-                    </div>
-
-                    <div>
-                        <strong>Procesos</strong>
-                        <span>Gestión centralizada</span>
-                    </div>
-
-                </article>
-
-
-                <article class="stat-item reveal">
-
-                    <div class="stat-icon">
-                        ◉
-                    </div>
-
-                    <div>
-                        <strong>Soporte</strong>
-                        <span>Acompañamiento continuo</span>
-                    </div>
-
-                </article>
-
+{{-- ========================= PROVEEDORES (API GET /proveedores) ========================= --}}
+<section class="api-section api-section--dark" id="proveedores">
+    <div class="container">
+        <div class="landing-heading landing-heading--split reveal">
+            <div>
+                <span class="section-label">RED DE PROVEEDORES</span>
+                <h2>Aliados verificados <span>en todo México.</span></h2>
             </div>
-
-        </section>
-
-        <!-- =========================
-             ¿QUÉ ES COMVERZA?
-        ========================== -->
-
-        <section class="about-section" id="nosotros">
-
-            <div class="container about-grid">
-
-
-                <!-- IMAGEN FUTURA -->
-
-                <div class="about-image reveal">
-                    <img 
-                        src="{{ asset('images/que_somos_comverza.png') }}"
-                        alt="COMVERZA - Plataforma empresarial"
-                    >
-                </div>
-
-
-                <!-- INFORMACIÓN -->
-
-                <div class="about-content reveal">
-
-                    <span class="section-label">
-                        ¿QUÉ ES COMVERZA?
-                    </span>
-
-
-                    <h2>
-                        Una visión para
-                        <span>
-                            centralizar la gestión empresarial.
-                        </span>
-                    </h2>
-
-
-                    <p>
-                        COMVERZA es una plataforma empresarial
-                        diseñada para conectar procesos, empresas,
-                        clientes y proveedores dentro de un mismo
-                        entorno digital.
-                    </p>
-
-
-                    <div class="benefits">
-
-
-                        <div class="benefit">
-
-                            <div class="benefit-icon">
-                                ✓
-                            </div>
-
-                            <div>
-                                <strong>
-                                    Más eficiencia
-                                </strong>
-
-                                <span>
-                                    Simplifica tus procesos.
-                                </span>
-                            </div>
-
-                        </div>
-
-
-                        <div class="benefit">
-
-                            <div class="benefit-icon">
-                                ✓
-                            </div>
-
-                            <div>
-                                <strong>
-                                    Mayor control
-                                </strong>
-
-                                <span>
-                                    Ten una visión más clara.
-                                </span>
-                            </div>
-
-                        </div>
-
-
-                        <div class="benefit">
-
-                            <div class="benefit-icon">
-                                ✓
-                            </div>
-
-                            <div>
-                                <strong>
-                                    Más conexión
-                                </strong>
-
-                                <span>
-                                    Mantén todo conectado.
-                                </span>
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- =========================
-             MODULOS DE LA PLATAFORMA
-        ========================== -->
-
-        <section class="modules-section" id="productos">
-
-            <div class="container">
-
-                <div class="modules-heading reveal">
-
-                    <div>
-
-                        <span class="section-label">
-                            MÓDULOS DE LA PLATAFORMA
-                        </span>
-
-                        <h2>
-                            Todo lo que necesitas
-                            <span>
-                                en un solo lugar.
-                            </span>
-                        </h2>
-
-                    </div>
-
-                    <p>
-                        Cada módulo está diseñado para simplificar
-                        tus procesos y ayudarte a mantener tu negocio conectado.
-                    </p>
-
-                </div>
-
-
-                <div class="modules-grid">
-
-
-                    <!-- PRODUCTOS -->
-
-                    <article class="module-card reveal">
-
-                        <div class="module-icon">
-                            ◈
-                        </div>
-
-                        <div class="module-content">
-
-                            <h3>
-                                Productos
-                            </h3>
-
-                            <p>
-                                Catálogo y control de inventario.
-                            </p>
-
-                        </div>
-
-                        <a href="#">
-                            →
-                        </a>
-
-                    </article>
-
-
-                    <!-- PEDIDOS -->
-
-                    <article class="module-card reveal">
-
-                        <div class="module-icon">
-                            🛒
-                        </div>
-
-                        <div class="module-content">
-
-                            <h3>
-                                Pedidos
-                            </h3>
-
-                            <p>
-                                Seguimiento y gestión comercial.
-                            </p>
-
-                        </div>
-
-                        <a href="#">
-                            →
-                        </a>
-
-                    </article>
-
-
-                    <!-- PROVEEDORES -->
-
-                    <article class="module-card reveal">
-
-                        <div class="module-icon">
-                            👥
-                        </div>
-
-                        <div class="module-content">
-
-                            <h3>
-                                Proveedores
-                            </h3>
-
-                            <p>
-                                Red de proveedores y relaciones comerciales.
-                            </p>
-
-                        </div>
-
-                        <a href="#">
-                            →
-                        </a>
-
-                    </article>
-
-
-                    <!-- FACTURACIÓN -->
-
-                    <article class="module-card reveal">
-
-                        <div class="module-icon">
-                            ▤
-                        </div>
-
-                        <div class="module-content">
-
-                            <h3>
-                                Facturación
-                            </h3>
-
-                            <p>
-                                Documentos y control administrativo.
-                            </p>
-
-                        </div>
-
-                        <a href="#">
-                            →
-                        </a>
-
-                    </article>
-
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- =========================
-            FOOTER
-        ========================== -->
-
-        <footer class="footer" id="contacto">
-
-            <div class="container footer-content">
-
-
-                <!-- MARCA -->
-
-                <div class="footer-brand">
-
-                    <a href="#">
-
-                        <img
-                            src="{{ asset('images/logo_comverza.png') }}"
-                            alt="COMVERZA"
-                        >
-
-                    </a>
-
-                    <p>
-                        Tecnología que impulsa tu negocio.
-                    </p>
-
-                </div>
-
-
-                <!-- NAVEGACIÓN -->
-
-                <div class="footer-column">
-
-                    <h4>
-                        Empresa
-                    </h4>
-
-                    <a href="#nosotros">
-                        Nosotros
-                    </a>
-
-                    <a href="#servicios">
-                        Servicios
-                    </a>
-
-                    <a href="#productos">
-                        Productos
-                    </a>
-
-                </div>
-
-
-                <!-- PLATAFORMA -->
-
-                <div class="footer-column">
-
-                    <h4>
-                        Plataforma
-                    </h4>
-
-                    <a href="#productos">
-                        Productos
-                    </a>
-
-                    <a href="#productos">
-                        Pedidos
-                    </a>
-
-                    <a href="#productos">
-                        Proveedores
-                    </a>
-
-                    <a href="#productos">
-                        Facturación
-                    </a>
-
-                </div>
-
-
-                <!-- CONTACTO -->
-
-                <div class="footer-column">
-
-                    <h4>
-                        Contacto
-                    </h4>
-
-                    <a href="#">
-                        contacto@comverza.com
-                    </a>
-
-                    <a href="#">
-                        Atención empresarial
-                    </a>
-
-                    <a href="#">
-                        Soporte
-                    </a>
-
-                </div>
-
-
-            </div>
-
-
-            <!-- COPYRIGHT -->
-
-            <div class="footer-bottom">
-
-                <div class="container footer-bottom-content">
-
-                    <span>
-                        © {{ date('Y') }} COMVERZA.
-                        Todos los derechos reservados.
-                    </span>
-
-                    <div>
-
-                        <a href="#">
-                            Privacidad
-                        </a>
-
-                        <a href="#">
-                            Términos
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </footer>
-    </main>
-
-    <script src="{{ asset('js/comverza.js') }}"></script>
-
-</body>
-</html>
+            <p>Trabajamos con proveedores calificados para garantizar abasto, calidad y tiempos de entrega.</p>
+        </div>
+        <div class="provider-grid" id="apiProveedores">
+            @for ($i = 0; $i < 6; $i++)<div class="skeleton skeleton-card dark"></div>@endfor
+        </div>
+    </div>
+</section>
+
+{{-- ========================= CTA ========================= --}}
+<section class="cta-section">
+    <div class="container cta-box reveal" style="background-image:linear-gradient(110deg, rgba(6,17,47,.96) 35%, rgba(6,17,47,.55)), url('{{ asset('images/landing/oficina-operaciones.jpg') }}')">
+        <div>
+            <span class="section-label">¿LISTO PARA CRECER?</span>
+            <h2>Lleva tu operación al siguiente nivel con <span>COMVERZA.</span></h2>
+            <p>Agenda una demostración y descubre cómo centralizar tu negocio en días, no en meses.</p>
+        </div>
+        <div class="cta-actions">
+            <a href="{{ route('contacto') }}" class="btn btn-yellow">Solicitar demostración →</a>
+            <a href="{{ route('login') }}" class="btn btn-outline">Acceso a clientes</a>
+        </div>
+    </div>
+</section>
+@endsection
+
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/swiper@11.1.15/swiper-bundle.min.js"></script>
+<script>
+    window.COMVERZA_API = '{{ url('/api/v1') }}';
+    window.COMVERZA_CATALOGO = '{{ route('catalogo') }}';
+</script>
+<script src="{{ asset('js/landing-api.js') }}?v=3"></script>
+@endpush

@@ -197,6 +197,8 @@
                     action="{{ route('contacto.enviar') }}"
                     method="POST"
                     class="contact-form"
+                    enctype="multipart/form-data"
+                    id="formContacto"
                 >
 
                     @csrf
@@ -328,7 +330,30 @@
                             rows="6"
                             placeholder="Escribe tu mensaje..."
                             required
+                            minlength="10"
+                            maxlength="2000"
                         >{{ old('mensaje') }}</textarea>
+
+                    </div>
+
+
+                    <div class="contact-field">
+
+                        <label for="adjunto">
+                            Archivo adjunto (opcional)
+                        </label>
+
+                        <input
+                            type="file"
+                            id="adjunto"
+                            name="adjunto"
+                            accept=".pdf,.jpg,.jpeg,.png,.docx"
+                            data-max-mb="5"
+                        >
+
+                        <small class="contact-file-hint" id="adjuntoHint">
+                            PDF, JPG, PNG o DOCX · máximo 5 MB
+                        </small>
 
                     </div>
 
@@ -346,8 +371,8 @@
 
 
                     <p class="contact-form-footnote">
-                        Al enviar este formulario, Laravel validará
-                        la información antes de procesarla.
+                        Validamos tu información antes de enviarla y
+                        recibirás un acuse en tu correo.
                     </p>
 
                 </form>

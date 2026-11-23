@@ -8,12 +8,13 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libjpeg62-turbo-dev \
     libfreetype6-dev \
+    libwebp-dev \
     libzip-dev \
     libonig-dev \
     libxml2-dev \
     libicu-dev \
     libpq-dev \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
     && docker-php-ext-install \
         pdo \
         pdo_mysql \
@@ -53,3 +54,11 @@ COPY docker/php/opcache.ini /usr/local/etc/php/conf.d/opcache-comverza.ini
 COPY docker/php/apache-optimization.conf /etc/apache2/conf-available/comverza-optimization.conf
 
 RUN a2enconf comverza-optimization
+
+# Límites de subida de archivos
+RUN printf "upload_max_filesize=10M\npost_max_size=12M\nmemory_limit=512M\n" > /usr/local/etc/php/conf.d/uploads.ini
+
+COPY docker/entrypoint.sh /usr/local/bin/comverza-entrypoint
+RUN sed -i 's/\r$//' /usr/local/bin/comverza-entrypoint && chmod +x /usr/local/bin/comverza-entrypoint
+
+ENTRYPOINT ["comverza-entrypoint"]

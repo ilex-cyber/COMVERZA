@@ -2,18 +2,22 @@
 
 namespace Tests\Feature;
 
-// use Illuminate\Foundation\Testing\RefreshDatabase;
+use Database\Seeders\DatabaseSeeder;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class ExampleTest extends TestCase
 {
-    /**
-     * A basic test example.
-     */
-    public function test_the_application_returns_a_successful_response(): void
-    {
-        $response = $this->get('/');
+    use RefreshDatabase;
 
-        $response->assertStatus(200);
+    protected $seed = true;
+
+    protected $seeder = DatabaseSeeder::class;
+
+    public function test_paginas_publicas_responden(): void
+    {
+        foreach (['/', '/servicios', '/plataforma', '/catalogo', '/contacto', '/login', '/olvide-mi-contrasena'] as $url) {
+            $this->get($url)->assertOk();
+        }
     }
 }
